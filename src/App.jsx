@@ -1,32 +1,59 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components/macro';
+
+import LogoSplitter from './images/logo.svg';
 
 import Bill from './components/Bill/Bill';
 import SelectTip from './components/SelectTip/SelectTip';
 import People from './components/People/People';
 import Total from './components/Total/Total';
-
-import { handleBill, calculate } from './utils/handleChange';
-
-const Title = styled.p`
-    text-align: center;
-    color: ${(props) => props.theme.colors.veryDarkCyan};
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 10px;
-    padding-top: 50px;
-`;
+import Footer from './components/Footer/Footer';
 
 const Container = styled.main`
-    background-color: ${(props) => props.theme.colors.white};
-    margin-top: 40px;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px 25px 0 0;
-    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media only screen and (${(props) => props.theme.breakpoints.laptops}) {
+    }
 `;
 
-const Form = styled.form``;
+const Logo = styled.img`
+    padding-top: 2.5rem;
+    width: 5.625rem;
+    height: auto;
+`;
+
+const Main = styled.div`
+    background-color: ${(props) => props.theme.colors.white};
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5625rem 1.5625rem 0 0;
+    padding: 2.5rem 1.875rem;
+    margin-top: 2.5rem;
+
+    @media only screen and (${(props) => props.theme.breakpoints.laptops}) {
+        width: 57.5rem;
+        height: 30rem;
+        padding: 1.875rem 2.8125rem;
+        border-radius: 1.5625rem;
+    }
+`;
+
+const Form = styled.form`
+    @media only screen and (${(props) => props.theme.breakpoints.laptops}) {
+        display: grid;
+        height: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.1fr 1fr 0.1fr;
+        gap: 0rem 1.25rem;
+        grid-template-areas:
+            'bill total'
+            'tip total'
+            'people total';
+    }
+`;
 
 function App() {
     const [total, setTotal] = useState({
@@ -34,46 +61,42 @@ function App() {
         tip: 0,
         people: 0,
         tipperperson: 0,
+        totalperperson: 0,
     });
 
-    console.log(total);
-
-    // let tipperperson = useRef(0);
-    // let totalperperson = 0;
-
-    // useEffect(() => {
-    //     tipperperson.current = (
-    //         ((total.bill / 100) * total.tip) /
-    //         total.people
-    //     ).toFixed(2);
-    //     console.log(tipperperson.current);
-    // }, [total]);
-
-    // console.log('Outside useEffect' + passedtip);
+    const billRef = useRef(null);
+    const customTipRef = useRef(null);
+    const peopleRef = useRef(null);
 
     return (
-        <>
-            <Title>
-                SPLI <br /> TTER
-            </Title>
-            <Container>
-                <Form
-                // onChange={(e) => {
-                //     handleBill(e, setTotal, total);
-                //     calculate(e, setTotal, total);
-                // }}
-                >
-                    <Bill setTotal={setTotal} total={total} />
-                    <SelectTip setTotal={setTotal} total={total} />
-                    <People setTotal={setTotal} total={total} />
+        <Container>
+            <Logo src={LogoSplitter} alt='Splitter Logo' />
+            <Main>
+                <Form>
+                    <Bill setTotal={setTotal} total={total} billRef={billRef} />
+                    <SelectTip
+                        setTotal={setTotal}
+                        total={total}
+                        customTipRef={customTipRef}
+                    />
+                    <People
+                        setTotal={setTotal}
+                        total={total}
+                        peopleRef={peopleRef}
+                    />
                     <Total
+                        setTotal={setTotal}
+                        total={total}
                         tipperperson={total.tipperperson}
-                        // tipperperson={tipperperson.current}
-                        // totalperperson={totalperperson}
+                        totalperperson={total.totalperperson}
+                        billRef={billRef}
+                        customTipRef={customTipRef}
+                        peopleRef={peopleRef}
                     />
                 </Form>
-            </Container>
-        </>
+            </Main>
+            <Footer />
+        </Container>
     );
 }
 

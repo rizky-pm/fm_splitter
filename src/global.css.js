@@ -10,7 +10,11 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html {
-        font-size: 18px;
+        font-size: 16px;
+
+        @media only screen and (${(props) => props.theme.breakpoints.laptops}) {
+            font-size: 14px;
+        }
     }
 
     body {
