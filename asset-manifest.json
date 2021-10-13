@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/fm_splitter/static/js/main.aca331d2.chunk.js",
+    "main.js.map": "/fm_splitter/static/js/main.aca331d2.chunk.js.map",
+    "runtime-main.js": "/fm_splitter/static/js/runtime-main.67db1b49.js",
+    "runtime-main.js.map": "/fm_splitter/static/js/runtime-main.67db1b49.js.map",
+    "static/js/2.2b9651f5.chunk.js": "/fm_splitter/static/js/2.2b9651f5.chunk.js",
+    "static/js/2.2b9651f5.chunk.js.map": "/fm_splitter/static/js/2.2b9651f5.chunk.js.map",
+    "index.html": "/fm_splitter/index.html",
+    "static/js/2.2b9651f5.chunk.js.LICENSE.txt": "/fm_splitter/static/js/2.2b9651f5.chunk.js.LICENSE.txt",
+    "static/media/icon-dollar.9f9be353.svg": "/fm_splitter/static/media/icon-dollar.9f9be353.svg",
+    "static/media/icon-person.65bfd204.svg": "/fm_splitter/static/media/icon-person.65bfd204.svg",
+    "static/media/logo.3cc0528b.svg": "/fm_splitter/static/media/logo.3cc0528b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.67db1b49.js",
+    "static/js/2.2b9651f5.chunk.js",
+    "static/js/main.aca331d2.chunk.js"
+  ]
+}
