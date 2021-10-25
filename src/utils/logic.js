@@ -37,7 +37,7 @@ export const calculate = (e, setTotal, total) => {
         ),
         totalperperson: (
             ((total.bill / 100) * total.tip) / total.people +
-            total.bill / 5
+            total.bill / total.people
         ).toFixed(2),
     }));
 };
